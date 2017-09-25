@@ -1,0 +1,47 @@
+.container{
+	margin-top:10%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color:#ffffff;
+	border-radius: 5px;
+	min-width: 180px;
+	max-width: 360px;
+	border: 1px solid #e6e6e6;
+}
+
+.wrapper{
+	position: relative;
+	margin-top: 10px; 
+}
+
+.form-login{
+	margin: 10px 0 0 0;
+	padding:0px 0px 20px 0px;
+}
+
+.form-control{
+	display:list-item;
+	height:auto;
+	width:90%;
+	margin: 0 auto;
+	border: 1px solid #e6e6e6;
+	font-size:20px;
+}
+
+input[type="text"]{
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+input[type="text"]:focus{
+	border-color:#4dd2ff;
+}
+
+input[type="password"]{
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}
+
+input[type="password"]:focus{
+	border-color:#4dd2ff;
+}

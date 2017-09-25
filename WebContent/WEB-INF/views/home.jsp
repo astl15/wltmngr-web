@@ -6,9 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel='stylesheet' href='<c:url value="/resources/css/style.css" />' type='text/css'/>
+<link rel='stylesheet' href='<c:url value="/resources/css/main.css" />' type='text/css'/>
+<link rel='stylesheet' href='<c:url value="/resources/css/login.css" />' type='text/css'/>
 </head>
 <body>
-	<p>JSP folder dispay test in passed</p>
+	<div class="container">
+		<div class="wrapper">
+			<form action="" class="form-login">
+				<input type="text" class="form-control" name="username" placeholder="Username" autofocus="">
+				<input type="password" name="password" class="form-control"  placeholder="Password" >
+				<input type="checkbox" name="mode" value="isDemoMode">Demo Mode
+				<input type="submit" value="Login"></button>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
