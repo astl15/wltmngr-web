@@ -22,6 +22,26 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+      	 <groupId>org.codehaus.mojo</groupId>
+    		<artifactId>jaxws-maven-plugin</artifactId>
+    		<version>2.5</version>
+    		<executions>
+    			<execution>
+    				<id>userinstancewsimport</id>
+    				<goals>
+    					<goal>wsimport</goal>
+    				</goals>
+    				<configuration>
+    					<packageName>ro.ast.userservice</packageName>
+    					<destDir>target/generated-sources/wsimport</destDir>
+    					<wsdlUrls>
+    						<wsdlUrl>http://localhost:8080/UserInstance/UserInstanceWS?wsdl</wsdlUrl>
+    					</wsdlUrls>
+    				</configuration>
+    			</execution>
+    		</executions>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
