@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<div class="wrapper">
-			<form action="" class="form-login">
+			<form action="/WltMngrWeb/login" method="post" class="form-login">
 				<input type="text" class="form-control" name="username" placeholder="Username" autofocus="">
 				<input type="password" name="password" class="form-control"  placeholder="Password" >
 				<input type="checkbox" name="mode" value="isDemoMode">Demo Mode
