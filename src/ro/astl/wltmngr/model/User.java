@@ -1,9 +1,10 @@
-package ro.astl.mngr.model;
+package ro.astl.wltmngr.model;
 
 public class User {
 	private int id;
 	private String username;
 	private String password;
+	private boolean demo;
 	
 	public User(){
 	}
@@ -25,6 +26,14 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isDemo() {
+		return demo;
+	}
+
+	public void setDemo(boolean demo) {
+		this.demo = demo;
 	}
 	
 	

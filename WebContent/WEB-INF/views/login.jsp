@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,12 +13,12 @@
 <body>
 	<div class="container">
 		<div class="wrapper">
-			<form action="/WltMngrWeb/login" method="post" class="form-login">
-				<input type="text" class="form-control" name="username" placeholder="Username" autofocus="">
-				<input type="password" name="password" class="form-control"  placeholder="Password" >
-				<input type="checkbox" name="mode" value="isDemoMode">Demo Mode
-				<input type="submit" value="Login"></button>
-			</form>
+			<form:form action="/WltMngrWeb/login" method="post" modelAttribute="user" cssClass="form-login">
+				<form:input path="username" cssClass="form-control" name="username" placeholder="Username" autofocus=""/>
+				<form:input path="password" type="password" name="password" class="form-control"  placeholder="Password" />
+				<form:checkbox path="demo"/>Demo Mode
+				<input type="submit" value="Login"/>
+			</form:form>
 		</div>
 	</div>
 </body>

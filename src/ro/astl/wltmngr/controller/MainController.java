@@ -13,7 +13,7 @@ public class MainController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String getHome(){
 		logger.debug("/ Request Mapped");
-		return "home";
+		return "redirect:login";
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
