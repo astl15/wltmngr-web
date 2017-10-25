@@ -18,12 +18,12 @@ public class LoginController {
 	private static final Logger logger = (Logger) LogManager.getLogger(LoginController.class);
 	private UserInstanceService userInstanceService;
 	
-	/*@RequestMapping(value="/login", method=RequestMethod.GET)
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView getLogin(){
 		logger.debug("GET login Mapped");
 		return new ModelAndView("login","user",new User());
 	}
-
+	/*
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView postLogin(@ModelAttribute("user")User user, 
 			BindingResult result, 
