@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.ast.userservice.*;
-import ro.astl.wltmngr.model.User;
+import ro.astl.wltmngr.model.UserDTO;
 @Controller
 public class LoginController {
 	
@@ -21,7 +21,7 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView getLogin(){
 		logger.debug("GET login Mapped");
-		return new ModelAndView("login","user",new User());
+		return new ModelAndView("login","user",new UserDTO());
 	}
 	/*
 	@RequestMapping(value="/login", method=RequestMethod.POST)
