@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import ro.ast.userservice.*;
 import ro.astl.wltmngr.model.UserDTO;
 @Controller
 public class LoginController {
 	
 	private static final Logger logger = (Logger) LogManager.getLogger(LoginController.class);
-	private UserInstanceService userInstanceService;
+	//private UserInstanceService userInstanceService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView getLogin(){

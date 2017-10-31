@@ -1,12 +1,12 @@
 package ro.astl.wltmngr.model;
 
-public class User {
+public class UserDTO {
 	private int id;
 	private String username;
 	private String password;
 	private boolean demo;
 	
-	public User(){
+	public UserDTO(){
 	}
 	
 	public int getId() {
