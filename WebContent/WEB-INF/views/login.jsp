@@ -13,12 +13,12 @@
 <body>
 	<div class="container">
 		<div class="wrapper">
-			<form:form action="/WltMngrWeb/login" method="post" modelAttribute="user" cssClass="form-login">
-				<form:input path="username" cssClass="form-control" name="username" placeholder="Username" autofocus=""/>
-				<form:input path="password" type="password" name="password" class="form-control"  placeholder="Password" />
-				<form:checkbox path="demo"/>Demo Mode
+			<form action="/WltMngrWeb/login" method="post" class="form-login">
+				<input type="text" class="form-control" name="username" placeholder="Username"/>
+				<input type="password" class="form-control" name="password"  placeholder="Password" />
+				<input type="checkbox" name="demo"/>Demo Mode
 				<input type="submit" value="Login"/>
-			</form:form>
+			</form>
 		</div>
 	</div>
 </body>

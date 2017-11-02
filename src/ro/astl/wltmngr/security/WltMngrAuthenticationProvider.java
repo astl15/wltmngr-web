@@ -72,7 +72,7 @@ public class WltMngrAuthenticationProvider implements AuthenticationProvider {
 
 	@Override
 	public boolean supports(Class<?> auth) {
-		return UsernamePasswordAuthenticationToken.class.isAssignableFrom(auth);	
+		return auth.equals(UsernamePasswordAuthenticationToken.class);	
 	}
 
 }

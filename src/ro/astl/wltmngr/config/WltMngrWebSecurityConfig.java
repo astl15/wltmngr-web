@@ -27,7 +27,7 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	WltMngrAuthenticationProvider provider;
 	
-	@Bean
+	/*@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		List<AuthenticationProvider> authenticationProviderList = new ArrayList<AuthenticationProvider>();
@@ -35,15 +35,22 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
 		AuthenticationManager authenticationManager = new ProviderManager(
 				authenticationProviderList);
 		return authenticationManager;
-	}
+	}*/
 	
-	@Bean
+	/*@Bean
 	public WltMngrUsernamePasswordAuthenticationFilter getWltMngrFilter() throws Exception{
 		WltMngrUsernamePasswordAuthenticationFilter filter = new WltMngrUsernamePasswordAuthenticationFilter();
 		filter.setAuthenticationManager(authenticationManagerBean());
 		//filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler());
 		return filter;
-	}
+	}*/
+	
+	@Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(provider);
+            //.inMemoryAuthentication()
+                //.withUser("user").password("password").roles("USER");
+    }
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -56,14 +63,15 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+        	.csrf()
+        		.disable()
         	.authorizeRequests()
-        	.anyRequest().authenticated()
+        		.anyRequest().authenticated()
         	.and()
         	.formLogin()
-          	.loginPage("/login")
-          	.permitAll()
-          	.and()
-          	.addFilter(getWltMngrFilter());
-        
+        		.loginPage("/login")
+        		.permitAll()
+        	.and()
+        	.httpBasic();
     }
 }

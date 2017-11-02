@@ -14,43 +14,11 @@ import ro.astl.wltmngr.model.UserDTO;
 public class LoginController {
 	
 	private static final Logger logger = (Logger) LogManager.getLogger(LoginController.class);
-	//private UserInstanceService userInstanceService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public ModelAndView getLogin(){
+	public String getLogin(){
 		logger.debug("GET login Mapped");
-		return new ModelAndView("login","user",new UserDTO());
+		return "login";
 	}
-	/*
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView postLogin(@ModelAttribute("user")User user, 
-			BindingResult result, 
-			ModelMap model) {
-		logger.debug("POST login Mapped");
-		UserInstanceService_Service service = new UserInstanceService_Service();
-		userInstanceService = service.getUserInstanceImplPort();*/
-		
-		/*Map request*/
-		/*ApplicationContext context = new ApplicationContext();
-		context.setApplicationName("WLTMNGR");
-		UserInstanceIn request = new UserInstanceIn();
-		request.setConxtext(context);
-		if(user.isDemo()){
-			request.setUsername("Andrei");
-			request.setPassword("test");
-		}else{
-			request.setUsername(user.getUsername());
-			request.setPassword(user.getPassword());
-		}*/
-		
-		/*Call UserInstanceWS*/
-		//UserInstanceOut response = userInstanceService.getUserbyUsername(request);
-		
-		/*Use response*/
-		/*if("SUCCESS".equals(response.getResponseCode())){
-			return new ModelAndView("placeholder","loggedUser",user);
-		}else{
-			return new ModelAndView("error","rejectedUser",user);
-		}
-	}*/
+	
 }
