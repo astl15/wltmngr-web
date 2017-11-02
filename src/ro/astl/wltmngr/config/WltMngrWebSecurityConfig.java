@@ -1,6 +1,7 @@
 package ro.astl.wltmngr.config;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +28,18 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	WltMngrAuthenticationProvider provider;
 	
-	/*@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		List<AuthenticationProvider> authenticationProviderList = new ArrayList<AuthenticationProvider>();
-		authenticationProviderList.add(provider);
-		AuthenticationManager authenticationManager = new ProviderManager(
-				authenticationProviderList);
-		return authenticationManager;
-	}*/
-	
-	/*@Bean
+	@Bean
 	public WltMngrUsernamePasswordAuthenticationFilter getWltMngrFilter() throws Exception{
 		WltMngrUsernamePasswordAuthenticationFilter filter = new WltMngrUsernamePasswordAuthenticationFilter();
 		filter.setAuthenticationManager(authenticationManagerBean());
 		//filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler());
 		return filter;
-	}*/
+	}
 	
 	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(provider);
-            //.inMemoryAuthentication()
+            //auth.inMemoryAuthentication()
                 //.withUser("user").password("password").roles("USER");
     }
 	
@@ -70,8 +61,11 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
         	.and()
         	.formLogin()
         		.loginPage("/login")
+        		//.defaultSuccessUrl("/register")
         		.permitAll()
+        		
         	.and()
+        		//.addFilter(getWltMngrFilter())
         	.httpBasic();
     }
 }

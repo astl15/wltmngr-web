@@ -19,11 +19,19 @@ public class WltMngrAuthenticationProvider implements AuthenticationProvider {
 	
 	@Resource
 	UserInstanceService userInstanceService;
+	
+	boolean isFirstAuthenticationAttempt;
+	
+	public WltMngrAuthenticationProvider(){
+		this.isFirstAuthenticationAttempt = true;
+	}
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 		String username = null; 
 		String password = null;
+		
+		
 		if(auth != null && auth.getName()!=null){
 			username = auth.getName().trim();
 		}
@@ -35,7 +43,9 @@ public class WltMngrAuthenticationProvider implements AuthenticationProvider {
 			throw new BadCredentialsException("Bad format user");
 		}
 		if(password==null || "".equals(password)){
-			throw new BadCredentialsException("Bad format password");
+			if(this.isFirstAuthenticationAttempt) {
+				throw new BadCredentialsException("Bad format password");
+			}
 		}
 		
 		/*Map request*/
@@ -59,15 +69,12 @@ public class WltMngrAuthenticationProvider implements AuthenticationProvider {
 		if("NODATA".equals(responseCode)){
 			throw new BadCredentialsException("Username not found");
 		}else if("SUCCESS".equals(responseCode)){
-			if(!passwordDB.equals(password)) {
+			if(!passwordDB.equals(password) && this.isFirstAuthenticationAttempt) {
 				throw new BadCredentialsException("Incorrect password");
 			}
 		}
-		
-		return new UsernamePasswordAuthenticationToken(username,password);
-		
-		
-		
+		this.isFirstAuthenticationAttempt = false;
+		return new UsernamePasswordAuthenticationToken(username,password);	
 	}
 
 	@Override
