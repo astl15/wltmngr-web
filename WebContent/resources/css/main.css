@@ -1,4 +1,11 @@
 body {
+	margin:0;
 	background-color: #f2f2f2;
 	font-family:Arial
+}
+
+.ribbon {
+	background-color: #ffffff;
+	padding: 1px;
+	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
 }
