@@ -12,6 +12,9 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import ro.ast.userservice.UserInstanceService;
 import ro.ast.userservice.UserInstanceService_Service;
@@ -34,20 +37,28 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	}
 	
 	/*@Bean
-	public UserInstanceService getService() throws MalformedURLException {
-		return (UserInstanceService)getProxy().;
-	}*/
-	
-	
-	
-	
-	@Bean
 	public ViewResolver viewResolver(){
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		resolver.setExposeContextBeansAsAttributes(true);
 		return resolver;
+	}*/
+	
+	@Bean
+	public TilesConfigurer tilesConfigurer() {
+		TilesConfigurer tilesConfigurer = new TilesConfigurer();
+		tilesConfigurer.setDefinitions(new String[] { "/WEB-INF/views/layout/tiles.xml" });
+		tilesConfigurer.setCheckRefresh(true);
+		return tilesConfigurer;
+	}
+	 
+	
+	@Bean
+	public TilesViewResolver getTilesViewResolver() {
+		TilesViewResolver tilesViewResolver = new TilesViewResolver();
+		tilesViewResolver.setViewClass(TilesView.class);
+		return tilesViewResolver;
 	}
 	
 	@Override
