@@ -15,7 +15,7 @@
             <tiles:insertAttribute name="header" />
         </header>
      
-        <section id="sidemenu">
+        <section id="side-menu">
             <tiles:insertAttribute name="menu" />
         </section>
              

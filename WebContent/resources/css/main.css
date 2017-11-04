@@ -1,7 +1,32 @@
+html{
+	height:100%;
+}
+
 body {
 	margin:0;
 	background-color: #f2f2f2;
-	font-family:Arial
+	font-family: Arial;
+	height:100%;
+}
+
+#side-menu {
+	float: left;
+	background-color: #fff;
+	z-index: -99999999999999;
+	position: relative;
+	width: 15%;
+	height:100%;
+	border-right: 1px solid #efe4e4;
+}
+
+#footer{
+	position: fixed;
+	left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .ribbon {
