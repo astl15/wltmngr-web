@@ -1,3 +1,9 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div>
-	<h1>Main page</h1>
+	<h3>Insertie rapida</h3>
+	<ul>
+		<c:forEach items="${categories}" var="category">
+			<li>${category.label}</li>
+		</c:forEach>
+	</ul>
 </div>
