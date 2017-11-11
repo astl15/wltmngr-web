@@ -36,14 +36,15 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 		return proxy;
 	}
 	
-	/*@Bean
+	@Bean
 	public ViewResolver viewResolver(){
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		resolver.setExposeContextBeansAsAttributes(true);
+		resolver.setOrder(1);
 		return resolver;
-	}*/
+	}
 	
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
@@ -58,6 +59,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	public TilesViewResolver getTilesViewResolver() {
 		TilesViewResolver tilesViewResolver = new TilesViewResolver();
 		tilesViewResolver.setViewClass(TilesView.class);
+		tilesViewResolver.setOrder(0);
 		return tilesViewResolver;
 	}
 	
