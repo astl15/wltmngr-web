@@ -1,7 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div>
-	<h3>Insertie rapida</h3>
+	<h3>Insertie rapida a unei plati</h3>
+	<p>Introduceti rapid datele unei plati efectuate astazi<p>
 	<form:form modelAttribute="payment" action="/WltMngrWeb/" method="POST">
 		<form:label path="description">Descriere</form:label>
 		<form:input path="description"/>
@@ -15,4 +17,24 @@
 			</form:select>
 		<form:button>Submit</form:button>
 	</form:form>
+	<h3>Sumar plati efectuate recent</h3>
+	<p>In aceasta sectiune sunt afisate cele mai recente 10 plati efectuate</p>
+	<c:if test="${fn:length(lastPaymentsByPrincipal) gt 0}">
+		<table>
+			<tr>
+				<th>Descriere</th>
+				<th>Categorie</th>
+				<th>Suma</th>
+				<th>Data</th>
+			</tr>
+		<c:forEach items = "${lastPaymentsByPrincipal}" var="payment">
+			<tr>
+				<td>${payment.description}</td>
+				<td>${payment.category.label}</td>
+				<td>${payment.amount}</td>
+				<td>${payment.date}</td>
+			</tr>			
+		</c:forEach>
+		</table>
+	</c:if>
 </div>
