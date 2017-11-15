@@ -3,7 +3,7 @@
 
 <tiles-definitions>
 
-	<definition name="main-template"
+	<definition name="main-template" preparer="ro.astl.wltmngr.controller.MenuController"
 		template="/WEB-INF/views/layout/mainTemplate.jsp">
 		<put-attribute name="title" value="" />  
        	<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />  
@@ -17,6 +17,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />  
 	</definition>
 	
-	<definition name="login" template="/WEB-INF/views/login.jsp">
-	</definition>
+	<!--  <definition name="login" template="/WEB-INF/views/login.jsp">
+	</definition>-->
+	
 </tiles-definitions>
