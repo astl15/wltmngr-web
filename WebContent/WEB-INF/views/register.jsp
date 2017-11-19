@@ -16,9 +16,10 @@
 	<spring:message code="register.form.password" var="passwordPlaceholder"/>
 	<spring:message code="register.form.repass" var="repassPlaceholder"/>
 	<spring:message code="register.form.button" var="buttonLabelPlaceholder"/>
+	<spring:message code="register.successful" var="regSuccessful" />
 	<div class="container">
 		<div class="wrapper">
-			<form:form cssClass="form-login" modelAttribute="register" action="WltMngrWeb/processRegistration" method="POST">
+			<form:form cssClass="form-login" modelAttribute="register" action="/WltMngrWeb/register" method="POST">
 				<form:input cssClass="form-control" path="username" placeholder="${usernamePlaceholder}" />
 				<form:password cssClass="form-control" path="password" placeholder="${passwordPlaceholder}" />
 				<form:password cssClass="form-control" path="repass" placeholder="${repassPlaceholder}" />
@@ -26,5 +27,10 @@
 			</form:form>
 		</div>
 	</div>
+	
+	<c:if test="${param.registrationSuccessful eq true}">
+		<p>${regSuccessful}</p>	
+		<a href="<c:url value="/login"/>"><spring:message code="register.logdescription"></spring:message></a>
+	</c:if>
 </body>
 </html>
