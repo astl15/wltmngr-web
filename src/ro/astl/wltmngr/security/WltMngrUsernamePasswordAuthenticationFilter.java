@@ -12,10 +12,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import ro.ast.userservice.ApplicationContext;
-import ro.ast.userservice.UserInstanceIn;
-import ro.ast.userservice.UserInstanceOut;
-import ro.ast.userservice.UserInstanceService;
+import ro.astl.userservice.ApplicationContext;
+import ro.astl.userservice.UserInstanceIn;
+import ro.astl.userservice.UserInstanceOut;
+import ro.astl.userservice.UserInstanceService;
 
 public class WltMngrUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 	

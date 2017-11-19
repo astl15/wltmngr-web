@@ -33,7 +33,7 @@
     					<goal>wsimport</goal>
     				</goals>
     				<configuration>
-    					<packageName>ro.ast.userservice</packageName>
+    					<packageName>ro.astl.userservice</packageName>
     					<destDir>target/generated-sources/wsimport</destDir>
     					<wsdlUrls>
     						<wsdlUrl>http://localhost:8181/UserInstance/UserInstanceWS?wsdl</wsdlUrl>

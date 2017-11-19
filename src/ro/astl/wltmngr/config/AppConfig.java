@@ -25,8 +25,8 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
-import ro.ast.userservice.UserInstanceService;
-import ro.ast.userservice.UserInstanceService_Service;
+import ro.astl.userservice.UserInstanceService;
+import ro.astl.userservice.UserInstanceService_Service;
 
 @Configuration
 @EnableWebMvc
@@ -94,7 +94,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	
 	@Bean
 	public LocaleResolver localeResolver(){
-	SessionLocaleResolver  resolver = new SessionLocaleResolver ();
+	SessionLocaleResolver  resolver = new SessionLocaleResolver();
 	   resolver.setDefaultLocale(new Locale("ro"));
 	   return resolver;
 	}

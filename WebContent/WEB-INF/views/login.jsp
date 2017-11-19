@@ -7,9 +7,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><spring:message code="login.form.login"></spring:message></title>
-<link rel='stylesheet' href='<c:url value="/resources/css/main.css" />' type='text/css'/>
-<link rel='stylesheet' href='<c:url value="/resources/css/login.css" />' type='text/css'/>
+<title><spring:message code="login.title"></spring:message></title>
+<link rel="stylesheet" href="<c:url value="/resources/css/main.css" />" type="text/css"/>
+<link rel="stylesheet" href="<c:url value="/resources/css/login.css" />" type="text/css"/>
 </head>
 <body>
 	<div class="container">
@@ -18,11 +18,12 @@
 				<input type="text" class="form-control" name="username" placeholder="<spring:message code="login.form.username"></spring:message>"/>
 				<input type="password" class="form-control" name="password"  placeholder="<spring:message code="login.form.password"></spring:message>" />
 				<input type="checkbox" name="demo"/><spring:message code="login.form.demodescription"></spring:message>
-				<input type="submit" value="<spring:message code="login.form.login"></spring:message>"/>
+				<input type="submit" value="<spring:message code="login.form.button"></spring:message>"/>
 			</form>
 		</div>
 	</div>
 	<p><spring:message code="login.description"></spring:message></p>
 	<p><spring:message code="login.regoffer"></spring:message></p>
+	<a href="<c:url value="/register"/>"><spring:message code="login.regdescription"></spring:message></a>
 </body>
 </html>

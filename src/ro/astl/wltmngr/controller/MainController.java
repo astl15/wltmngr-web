@@ -83,9 +83,4 @@ public class MainController {
 				"paymentsWS/v1/payments/add", request, String.class);
 		return "redirect:/";    	  
 	}
-	
-	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public String getRegister(){
-		return "register";
-	}
 }
