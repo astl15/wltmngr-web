@@ -7,6 +7,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 import ro.astl.userservice.ApplicationContext;
@@ -69,7 +70,7 @@ public class WltMngrAuthenticationProvider implements AuthenticationProvider {
 		if("NODATA".equals(responseCode)){
 			throw new BadCredentialsException("Username not found");
 		}else if("SUCCESS".equals(responseCode)){
-			if(!passwordDB.equals(password) && this.isFirstAuthenticationAttempt) {
+			if(!BCrypt.checkpw(password, passwordDB) && this.isFirstAuthenticationAttempt) {
 				throw new BadCredentialsException("Incorrect password");
 			}
 		}
