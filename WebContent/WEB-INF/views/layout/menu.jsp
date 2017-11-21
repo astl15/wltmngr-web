@@ -1,4 +1,6 @@
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <div>
-	<h3>Meniu</h3>
-	<p>${menu}</p>
+	Meniu
+	<tiles:importAttribute name="currentLocale"/>
+	${currentLocale}
 </div>
