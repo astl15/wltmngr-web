@@ -7,7 +7,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel='stylesheet' href='<c:url value="/resources/css/main.css" />' type='text/css'/>
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href='<c:url value="/resources/css/main.css" />' type="text/css"/>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  		<script src="<c:url value="/resources/js/datepicker.js" />" type="text/javascript"></script>
 		<title><tiles:getAsString name="title" /></title>
 	</head>
 	<body>

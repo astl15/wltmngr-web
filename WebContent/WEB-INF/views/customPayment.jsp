@@ -1,0 +1,1 @@
+<p>Date: <input id="datepicker" type="text"></p>

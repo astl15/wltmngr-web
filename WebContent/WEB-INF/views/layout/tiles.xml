@@ -17,6 +17,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />  
 	</definition>
 	
+	<definition name="customPayment" extends="main-template">
+		<put-attribute name="title" value="WltMngr" />
+		<put-attribute name="body" value="/WEB-INF/views/customPayment.jsp" />  
+	</definition>
+	
 	<!--  <definition name="login" template="/WEB-INF/views/login.jsp">
 	</definition>-->
 	
