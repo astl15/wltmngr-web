@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -30,15 +31,17 @@ import ro.astl.wltmngr.model.Category;
 import ro.astl.wltmngr.model.CategoryDTO;
 import ro.astl.wltmngr.model.Payment;
 import ro.astl.wltmngr.model.PaymentDTO;
+import ro.astl.wltmngr.utils.WltMngrEnv;
 
 @Controller
 public class MainController {
 	
 	private static final Logger logger = (Logger) LogManager.getLogger(MainController.class);
-	private static final String PAYMENTSWS_URL = "http://localhost:8181/PaymentsWS/";
+	private static Properties envProperties = WltMngrEnv.getProperties();
+	private static final String PAYMENTSWS_URL = envProperties.getProperty("payments.url");
 	
 	@Autowired
-	RestTemplate paymentsService;
+	private RestTemplate paymentsService;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView getHome(Principal principal){
