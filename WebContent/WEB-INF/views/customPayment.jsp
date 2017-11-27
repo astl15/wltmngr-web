@@ -8,10 +8,12 @@
 	<form:label path="amount">Suma</form:label>
 	<form:input path="amount"/>
 	<form:label path="category">Categorie</form:label>
-	<form:select path="category">
-		<c:forEach items="${categories}" var="category">
-			<form:option value="${category.id}" label="${category.label}"/>
-		</c:forEach>
-	</form:select>
+		<form:select path="category">
+			<c:forEach items="${categories}" var="category">
+				<c:if test="${currentLocale eq 'ro-ro'}">
+					<form:option value="${category.id}" label="${category.label}"/>
+				</c:if>	
+			</c:forEach>
+		</form:select>
 	<form:button>Submit</form:button>
 </form:form>

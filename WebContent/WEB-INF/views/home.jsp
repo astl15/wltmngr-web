@@ -12,7 +12,9 @@
 		<form:label path="category">Categorie</form:label>
 			<form:select path="category">
 				<c:forEach items="${categories}" var="category">
-					<form:option value="${category.id}" label="${category.label}"/>
+					<c:if test="${category.locale eq currentLocale}">
+						<form:option value="${category.id}" label="${category.label}"/>
+					</c:if>	
 				</c:forEach>
 			</form:select>
 		<form:button>Submit</form:button>
@@ -33,6 +35,25 @@
 				<td>${payment.category.label}</td>
 				<td>${payment.amount}</td>
 				<td>${payment.date}</td>
+			</tr>			
+		</c:forEach>
+		</table>
+	</c:if>
+	<h3>Sumar plati luna curenta</h3>
+	<c:if test="${fn:length(paymentsThisMonth) gt 0}">
+		<table>
+			<tr>
+				<th>Descriere</th>
+				<th>Categorie</th>
+				<th>Suma</th>
+				<th>Data</th>
+			</tr>
+		<c:forEach items = "${paymentsThisMonth}" var="paymentTM">
+			<tr>
+				<td>${paymentTM.description}</td>
+				<td>${paymentTM.category.label}</td>
+				<td>${paymentTM.amount}</td>
+				<td>${paymentTM.date}</td>
 			</tr>			
 		</c:forEach>
 		</table>

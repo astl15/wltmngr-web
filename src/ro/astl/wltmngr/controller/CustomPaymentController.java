@@ -4,9 +4,11 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -41,22 +43,25 @@ public class CustomPaymentController {
 	public ModelAndView getCustomPayment() {
 		List<Category> categories = new ArrayList<Category>();
 		Gson gson = new Gson();
-		String uriCategories = PAYMENTSWS_URL + "paymentsWS/v1/categories/getCategories";
+		Locale currentLocale = LocaleContextHolder.getLocale();
+		String uriCategories = PAYMENTSWS_URL + "categories/getCategories";
 		String jsonCategories = paymentsService
 				.getForObject(uriCategories , String.class);
 		categories = gson.fromJson(jsonCategories, List.class);
 		ModelAndView model = new ModelAndView();
-		model.setViewName("customPayment");
 		model.addObject("categories",categories);
 		model.addObject("customPayment", new CustomPaymentDTO());
+		model.addObject("currentLocale", currentLocale);
+		model.setViewName("customPayment");
 		return model;
 	}
 	
 	@RequestMapping(value="/payments/custom", method=RequestMethod.POST)
-	public String processFastPayment( @ModelAttribute("payment")CustomPaymentDTO payment, 
-		      BindingResult result, ModelMap model, Principal principal){
+	public ModelAndView processFastPayment( @ModelAttribute("payment")CustomPaymentDTO payment, 
+		      BindingResult result, Principal principal){
 		
 		String jsonRequest;
+		ModelAndView model = new ModelAndView("redirect:/");
 		Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
 		PaymentDTO paymentDTO = new PaymentDTO();
 		paymentDTO.setDate(LocalDate.parse(payment.getDate()));
@@ -69,8 +74,8 @@ public class CustomPaymentController {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> request = new HttpEntity<>(jsonRequest,headers);
 		String jsonResponse = paymentsService.postForObject(PAYMENTSWS_URL +
-				"paymentsWS/v1/payments/add", request, String.class);
-		return "redirect:/";    	  
+				"payments/add", request, String.class);
+		return model;    	  
 	}
 }
 

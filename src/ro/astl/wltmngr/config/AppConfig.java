@@ -43,7 +43,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	public JaxWsPortProxyFactoryBean getProxy() throws MalformedURLException {
 		JaxWsPortProxyFactoryBean proxy = new JaxWsPortProxyFactoryBean();
 		proxy.setServiceInterface(UserInstanceService.class);
-		proxy.setWsdlDocumentUrl(new URL("http://localhost:8181/UserInstance/UserInstanceWS?wsdl"));
+		proxy.setWsdlDocumentUrl(new URL("http://46.101.119.51:8080/UserInstance-0.0.1-SNAPSHOT/UserInstanceWS?wsdl"));
 		proxy.setNamespaceUri("http://ws.userservice.astl.ro/");
 		//proxy.setEndpointAddress("http://ws.userservice.astl.ro/");
 		proxy.setServiceName("UserInstanceService");

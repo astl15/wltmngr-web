@@ -5,11 +5,13 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -47,23 +49,43 @@ public class MainController {
 	public ModelAndView getHome(Principal principal){
 		logger.debug("/ Request Mapped");
 		
-		ModelAndView model = new ModelAndView();
-		model.setViewName("home");
+		LocalDate currentDate = LocalDate.now();
+		
+		Locale currentLocale = LocaleContextHolder.getLocale();
+		
+		String uriCategories = PAYMENTSWS_URL + "categories/getCategories";
+		String uriPayments = PAYMENTSWS_URL + "payments/last/" + principal.getName();
+		String uriPaymentsByMonth = PAYMENTSWS_URL + "payments/" + 
+				currentDate.getYear() + "/" + 
+				currentDate.getMonthValue() +"/" + 
+				principal.getName(); 
+		
 		Gson gson = new Gson();
 		List<Category> categories = new ArrayList<Category>();
 		List<Payment> payments = new ArrayList<Payment>();
-		String uriCategories = PAYMENTSWS_URL + "paymentsWS/v1/categories/getCategories";
-		String uriPayments = PAYMENTSWS_URL + "paymentsWS/v1/payments/last/" + principal.getName();
+		List<Payment> paymentsThisMonth = new ArrayList<Payment>();
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("home");
+		
 		String jsonCategories = paymentsService
 				.getForObject(uriCategories , String.class);
 		categories = gson.fromJson(jsonCategories, List.class);
+		
 		String jsonLastPayments = paymentsService
 				.getForObject(uriPayments, String.class);
 		payments = gson.fromJson(jsonLastPayments, List.class);
+		
+		String jsonPaymentsThisMonth = paymentsService
+				.getForObject(uriPaymentsByMonth, String.class);
+		paymentsThisMonth = gson.fromJson(jsonPaymentsThisMonth, List.class);
+		
+		model.addObject("currentLocale", currentLocale);
 		model.addObject("categories",categories);
 		model.addObject("user", principal.getName());
 		model.addObject("payment", new PaymentDTO());
 		model.addObject("lastPaymentsByPrincipal", payments);
+		model.addObject("paymentsThisMonth", paymentsThisMonth);
 		return model;
 	}
 	
@@ -83,7 +105,7 @@ public class MainController {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> request = new HttpEntity<>(jsonRequest,headers);
 		String jsonResponse = paymentsService.postForObject(PAYMENTSWS_URL +
-				"paymentsWS/v1/payments/add", request, String.class);
+				"payments/add", request, String.class);
 		return "redirect:/";    	  
 	}
 }

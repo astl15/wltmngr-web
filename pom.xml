@@ -36,7 +36,7 @@
     					<packageName>ro.astl.userservice</packageName>
     					<destDir>target/generated-sources/wsimport</destDir>
     					<wsdlUrls>
-    						<wsdlUrl>http://localhost:8181/UserInstance/UserInstanceWS?wsdl</wsdlUrl>
+    						<wsdlUrl>http://46.101.119.51:8080/UserInstance-0.0.1-SNAPSHOT/UserInstanceWS?wsdl</wsdlUrl>
     					</wsdlUrls>
     				</configuration>
     			</execution>
