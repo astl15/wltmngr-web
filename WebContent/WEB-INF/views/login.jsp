@@ -12,6 +12,11 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/login.css" />" type="text/css"/>
 </head>
 <body>
+	<c:if test="${not empty error}">
+		<div class="error-bar">
+			<p><spring:message code="login.error"></spring:message></p>
+		</div>
+	</c:if>
 	<div class="container">
 		<div class="wrapper">
 			<form action="/WltMngrWeb/login" method="post" class="form-login">
