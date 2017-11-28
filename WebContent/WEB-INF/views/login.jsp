@@ -17,13 +17,16 @@
 			<form action="/WltMngrWeb/login" method="post" class="form-login">
 				<input type="text" class="form-control" name="username" placeholder="<spring:message code="login.form.username"></spring:message>"/>
 				<input type="password" class="form-control" name="password"  placeholder="<spring:message code="login.form.password"></spring:message>" />
-				<input type="checkbox" name="demo"/><spring:message code="login.form.demodescription"></spring:message>
+				<input type="checkbox" name="demo"/><spring:message code="login.form.demodescription"></spring:message></br>
 				<input type="submit" value="<spring:message code="login.form.button"></spring:message>"/>
 			</form>
 		</div>
 	</div>
-	<p><spring:message code="login.description"></spring:message></p>
-	<p><spring:message code="login.regoffer"></spring:message></p>
-	<a href="<c:url value="/register"/>"><spring:message code="login.regdescription"></spring:message></a>
+	<div class="info-bar">
+		<p><spring:message code="login.description"></spring:message></p>
+	</div>
+	<div class="info-bar">
+		<p><spring:message code="login.regoffer"></spring:message><a href="<c:url value="/register"/>"><spring:message code="login.regdescription"></spring:message></a></p>
+	</div>
 </body>
 </html>

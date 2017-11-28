@@ -4,7 +4,6 @@ html{
 
 body {
 	margin:0;
-	background-color: #f2f2f2;
 	font-family: Arial;
 	height:100%;
 }
@@ -33,4 +32,25 @@ body {
 	background-color: #ffffff;
 	padding: 1px;
 	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.info-bar{
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+	width:80%;
+	background-color: #117bf3;
+	border-radius:5px;
+	color: #ffffff;
+}
+
+.info-bar p{
+	margin-left:2%;
+	padding-top:1%;
+	padding-bottom:1%;
+	
+}
+
+.info-bar a{
+	color:#fff;
 }
