@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -31,8 +32,10 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public WltMngrUsernamePasswordAuthenticationFilter getWltMngrFilter() throws Exception{
 		WltMngrUsernamePasswordAuthenticationFilter filter = new WltMngrUsernamePasswordAuthenticationFilter();
+		SimpleUrlAuthenticationFailureHandler failureHandler = new SimpleUrlAuthenticationFailureHandler();
+		failureHandler.setDefaultFailureUrl("/login?error");
 		filter.setAuthenticationManager(authenticationManagerBean());
-		//filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler());
+		filter.setAuthenticationFailureHandler(failureHandler);
 		return filter;
 	}
 	
@@ -62,9 +65,6 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
         	.and()
         	.formLogin()
         		.loginPage("/login")
-        			//.loginProcessingUrl("/login")
-        			//.failureUrl("/login?error=true")
-        		//.defaultSuccessUrl("/register")
         		.permitAll()	
         	.and()
         	.addFilter(getWltMngrFilter())
