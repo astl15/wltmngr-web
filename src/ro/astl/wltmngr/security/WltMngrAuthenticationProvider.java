@@ -19,9 +19,11 @@ import ro.astl.userservice.UserInstanceService;
 public class WltMngrAuthenticationProvider implements AuthenticationProvider {
 	
 	@Resource
-	UserInstanceService userInstanceService;
+	private UserInstanceService userInstanceService;
 	
-	boolean isFirstAuthenticationAttempt;
+	private boolean isFirstAuthenticationAttempt;
+	
+	public static final String DEMO_USERNAME = "demo";
 	
 	public WltMngrAuthenticationProvider(){
 		this.isFirstAuthenticationAttempt = true;
@@ -68,10 +70,11 @@ public class WltMngrAuthenticationProvider implements AuthenticationProvider {
 		String passwordDB = userInstanceOut.getPassword();
 		
 		if("NODATA".equals(responseCode)){
-			throw new BadCredentialsException("Username not found");
+			throw new BadCredentialsException("Invalid username or password");
 		}else if("SUCCESS".equals(responseCode)){
 			if(!BCrypt.checkpw(password, passwordDB) && this.isFirstAuthenticationAttempt) {
-				throw new BadCredentialsException("Incorrect password");
+				if(!username.equals(DEMO_USERNAME))
+					throw new BadCredentialsException("Invalid username or password");
 			}
 		}
 		this.isFirstAuthenticationAttempt = false;

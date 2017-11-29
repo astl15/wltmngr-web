@@ -65,10 +65,9 @@ public class WltMngrWebSecurityConfig extends WebSecurityConfigurerAdapter {
         			//.loginProcessingUrl("/login")
         			//.failureUrl("/login?error=true")
         		//.defaultSuccessUrl("/register")
-        		.permitAll()
-        		
+        		.permitAll()	
         	.and()
-        		//.addFilter(getWltMngrFilter())
+        	.addFilter(getWltMngrFilter())
         	.httpBasic();
     }
 }

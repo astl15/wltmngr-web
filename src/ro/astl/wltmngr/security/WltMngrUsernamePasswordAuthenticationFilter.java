@@ -19,6 +19,8 @@ import ro.astl.userservice.UserInstanceService;
 
 public class WltMngrUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 	
+	public static final String DEMO_USERNAME = "demo";
+	
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
@@ -44,11 +46,10 @@ public class WltMngrUsernamePasswordAuthenticationFilter extends UsernamePasswor
 		}
 		
 		UsernamePasswordAuthenticationToken authentication = null;
-		//if("true".equals(isDemo)){
-			authentication = new UsernamePasswordAuthenticationToken(username, password);
-		//}else{
-			//authentication = new UsernamePasswordAuthenticationToken(username, password);
-		//}
+		if("on".equals(isDemo)){
+			username = DEMO_USERNAME;
+		}
+		authentication = new UsernamePasswordAuthenticationToken(username, password);
 
 		setDetails(request, authentication);
 		return this.getAuthenticationManager().authenticate(authentication);
