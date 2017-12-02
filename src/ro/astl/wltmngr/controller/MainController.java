@@ -30,6 +30,7 @@ import com.google.gson.GsonBuilder;
 
 import ro.astl.wltmngr.adapter.LocalDateAdapter;
 import ro.astl.wltmngr.model.Category;
+import ro.astl.wltmngr.model.CategoryAmount;
 import ro.astl.wltmngr.model.CategoryDTO;
 import ro.astl.wltmngr.model.Payment;
 import ro.astl.wltmngr.model.PaymentDTO;
@@ -58,12 +59,23 @@ public class MainController {
 		String uriPaymentsByMonth = PAYMENTSWS_URL + "payments/" + 
 				currentDate.getYear() + "/" + 
 				currentDate.getMonthValue() +"/" + 
-				principal.getName(); 
+				principal.getName();
+		String uriAmountsPerCategory = PAYMENTSWS_URL + "amounts/categories/" +
+				currentDate.getYear() + "/" + 
+				currentDate.getMonthValue() +"/" + 
+				principal.getName();
+		String uriAmountsPerDate = PAYMENTSWS_URL + "amounts/date/" +
+				currentDate.getYear() + "/" + 
+				currentDate.getMonthValue() +"/" + 
+				principal.getName();
 		
 		Gson gson = new Gson();
 		List<Category> categories = new ArrayList<Category>();
 		List<Payment> payments = new ArrayList<Payment>();
 		List<Payment> paymentsThisMonth = new ArrayList<Payment>();
+		List<CategoryAmount> amountsPerCategory = new ArrayList<CategoryAmount>();
+		List<Payment> amountsPerDate = new ArrayList<Payment>();
+		
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("home");
@@ -80,12 +92,22 @@ public class MainController {
 				.getForObject(uriPaymentsByMonth, String.class);
 		paymentsThisMonth = gson.fromJson(jsonPaymentsThisMonth, List.class);
 		
+		String jsonAmountsPerCategory = paymentsService
+				.getForObject(uriAmountsPerCategory,  String.class);
+		amountsPerCategory = gson.fromJson(jsonAmountsPerCategory, List.class);
+		
+		String jsonAmountsPerDate = paymentsService
+				.getForObject(uriAmountsPerDate, String.class);
+		amountsPerDate = gson.fromJson(jsonAmountsPerDate, List.class);
+		
 		model.addObject("currentLocale", currentLocale);
 		model.addObject("categories",categories);
 		model.addObject("user", principal.getName());
 		model.addObject("payment", new PaymentDTO());
 		model.addObject("lastPaymentsByPrincipal", payments);
 		model.addObject("paymentsThisMonth", paymentsThisMonth);
+		model.addObject("amountsPerCategory", amountsPerCategory);
+		model.addObject("amountsPerDate", amountsPerDate);
 		return model;
 	}
 	

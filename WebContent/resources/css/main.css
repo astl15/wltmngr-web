@@ -18,7 +18,7 @@ body {
 	border-right: 1px solid #efe4e4;
 }
 
-#footer{
+/*#footer{
 	position: fixed;
 	left: 0;
     bottom: 0;
@@ -26,7 +26,7 @@ body {
     background-color: #fff;
 	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
     text-align: center;
-}
+}*/
 
 .ribbon {
 	background-color: #fff;

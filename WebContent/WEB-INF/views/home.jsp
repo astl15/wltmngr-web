@@ -19,6 +19,61 @@
 			</form:select>
 		<form:button>Submit</form:button>
 	</form:form>
+	
+	<h3>Costuri totale per categorie</h3>
+	<p>In aceasta sectiune sunt afisate costurile totale per catergorie pentru luna curenta</p>
+	<c:if test="${fn:length(amountsPerCategory) gt 0}">
+		<table>
+			<tr>
+				<th>Categorie</th>
+				<th>Suma</th>
+			</tr>
+		<c:forEach items = "${amountsPerCategory}" var="amount">
+			<tr>
+				<td>${amount.category}</td>
+				<td>${amount.amount}</td>
+			</tr>			
+		</c:forEach>
+		</table>
+	</c:if>
+	
+	<h3>Costuri totale plati zilnice in luna curenta</h3>
+	<p>In aceasta sectiune sunt afisate costurile totale zilnice pentru luna curenta</p>
+	<c:if test="${fn:length(amountsPerDate) gt 0}">
+		<table>
+			<tr>				
+				<th>Data</th>
+				<th>Suma</th>
+			</tr>
+		<c:forEach items = "${amountsPerDate}" var="amountPerDate">
+			<tr>
+				<td>${amountPerDate.date}</td>
+				<td>${amountPerDate.amount}</td>
+			</tr>			
+		</c:forEach>
+		</table>
+	</c:if>
+	
+	<h3>Sumar plati luna curenta</h3>
+	<c:if test="${fn:length(paymentsThisMonth) gt 0}">
+		<table>
+			<tr>
+				<th>Descriere</th>
+				<th>Categorie</th>
+				<th>Suma</th>
+				<th>Data</th>
+			</tr>
+		<c:forEach items = "${paymentsThisMonth}" var="paymentTM">
+			<tr>
+				<td>${paymentTM.description}</td>
+				<td>${paymentTM.category.label}</td>
+				<td>${paymentTM.amount}</td>
+				<td>${paymentTM.date}</td>
+			</tr>			
+		</c:forEach>
+		</table>
+	</c:if>
+	
 	<h3>Sumar plati efectuate recent</h3>
 	<p>In aceasta sectiune sunt afisate cele mai recente 10 plati efectuate</p>
 	<c:if test="${fn:length(lastPaymentsByPrincipal) gt 0}">
@@ -35,25 +90,6 @@
 				<td>${payment.category.label}</td>
 				<td>${payment.amount}</td>
 				<td>${payment.date}</td>
-			</tr>			
-		</c:forEach>
-		</table>
-	</c:if>
-	<h3>Sumar plati luna curenta</h3>
-	<c:if test="${fn:length(paymentsThisMonth) gt 0}">
-		<table>
-			<tr>
-				<th>Descriere</th>
-				<th>Categorie</th>
-				<th>Suma</th>
-				<th>Data</th>
-			</tr>
-		<c:forEach items = "${paymentsThisMonth}" var="paymentTM">
-			<tr>
-				<td>${paymentTM.description}</td>
-				<td>${paymentTM.category.label}</td>
-				<td>${paymentTM.amount}</td>
-				<td>${paymentTM.date}</td>
 			</tr>			
 		</c:forEach>
 		</table>
