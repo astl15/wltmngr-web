@@ -8,30 +8,57 @@ body {
 	height:100%;
 }
 
-#side-menu {
-	float: left;
-	background-color: #fff;
-	z-index: -99999999999999;
-	position: relative;
-	width: 15%;
-	height:100%;
-	border-right: 1px solid #efe4e4;
+header{
+	position:fixed;
+	top:0px;
+	width:100%;
+	border-bottom: 1px solid #e6e6e6;
+	background: #fff;
 }
 
-/*#footer{
-	position: fixed;
+.page-container{
+	display:flex;
+	background:#fff;	
+	padding-top: 5%;
+	/*height:100%;
+	width:100%;*/
+}
+
+.side-menu {
+	background:#fff;
+	flex: 0 0 25%;
+/*	left:0;
+	border-right: 1px solid #efe4e4;*/
+}
+
+.site-content {
+	background:#fff;
+	flex:1;
+}
+
+.body-container{
+	margin-right:1%;
+	border-radius: 5px;
+	border: 1px solid #e6e6e6;
+}
+
+.category-container{
+	margin:1%;
+	padding-left:1%;
+	padding-bottom:1%;
+	border-radius: 5px;
+	border: 1px solid #e6e6e6;
+}
+#footer{
+	clear:both;
 	left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #fff;
-	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
-    text-align: center;
-}*/
+    background: #fff;
+}
 
 .ribbon {
-	background-color: #fff;
-	padding: 1px;
-	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .info-bar{
@@ -75,5 +102,9 @@ body {
 
 .error-bar a{
 	color:#fff;
+}
+
+h3{
+	color: #02c94b;
 }
 

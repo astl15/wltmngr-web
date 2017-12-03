@@ -1,9 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<div>
+<div class="category-container">
 	<h3>Insertie rapida a unei plati</h3>
-	<p>Introduceti rapid datele unei plati efectuate astazi<p>
+	<p>Introduceti rapid datele unei plati efectuate astazi</p>
 	<form:form modelAttribute="payment" action="/WltMngrWeb/" method="POST">
 		<form:label path="description">Descriere</form:label>
 		<form:input path="description"/>
@@ -19,7 +19,8 @@
 			</form:select>
 		<form:button>Submit</form:button>
 	</form:form>
-	
+</div>
+<div class="category-container">	
 	<h3>Costuri totale per categorie</h3>
 	<p>In aceasta sectiune sunt afisate costurile totale per catergorie pentru luna curenta</p>
 	<c:if test="${fn:length(amountsPerCategory) gt 0}">
@@ -36,7 +37,8 @@
 		</c:forEach>
 		</table>
 	</c:if>
-	
+</div>
+<div class="category-container">	
 	<h3>Costuri totale plati zilnice in luna curenta</h3>
 	<p>In aceasta sectiune sunt afisate costurile totale zilnice pentru luna curenta</p>
 	<c:if test="${fn:length(amountsPerDate) gt 0}">
@@ -53,7 +55,8 @@
 		</c:forEach>
 		</table>
 	</c:if>
-	
+</div>
+<div class="category-container">	
 	<h3>Sumar plati luna curenta</h3>
 	<c:if test="${fn:length(paymentsThisMonth) gt 0}">
 		<table>
@@ -73,7 +76,8 @@
 		</c:forEach>
 		</table>
 	</c:if>
-	
+</div>
+<div class="category-container">	
 	<h3>Sumar plati efectuate recent</h3>
 	<p>In aceasta sectiune sunt afisate cele mai recente 10 plati efectuate</p>
 	<c:if test="${fn:length(lastPaymentsByPrincipal) gt 0}">

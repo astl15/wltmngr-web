@@ -15,18 +15,19 @@
 		<title><tiles:getAsString name="title" /></title>
 	</head>
 	<body>
-		<header id="header">
+		<header>
             <tiles:insertAttribute name="header" />
         </header>
-     
-        <section id="side-menu">
-            <tiles:insertAttribute name="menu" />
-        </section>
-             
-        <section id="site-content">
-            <tiles:insertAttribute name="body" />
-        </section>
-         
+     	<div class="page-container">
+     		<div class="side-menu">
+     			<tiles:insertAttribute name="menu" />
+     		</div>
+     		<div class="site-content">
+     			<div class="body-container">
+     				<tiles:insertAttribute name="body" />
+     			</div>
+     		</div>
+     	</div>
         <footer id="footer">
             <tiles:insertAttribute name="footer" />
         </footer>
