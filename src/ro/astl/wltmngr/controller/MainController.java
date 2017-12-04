@@ -4,8 +4,10 @@ import java.security.Principal;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -68,6 +70,10 @@ public class MainController {
 				currentDate.getYear() + "/" + 
 				currentDate.getMonthValue() +"/" + 
 				principal.getName();
+		String uriMonthlySummary = PAYMENTSWS_URL + "amounts/month/" +
+				currentDate.getYear() + "/" + 
+				currentDate.getMonthValue() +"/" + 
+				principal.getName();
 		
 		Gson gson = new Gson();
 		List<Category> categories = new ArrayList<Category>();
@@ -75,7 +81,7 @@ public class MainController {
 		List<Payment> paymentsThisMonth = new ArrayList<Payment>();
 		List<CategoryAmount> amountsPerCategory = new ArrayList<CategoryAmount>();
 		List<Payment> amountsPerDate = new ArrayList<Payment>();
-		
+		Map<String, Integer> monthlySummary = new HashMap<String, Integer>();
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("home");
@@ -100,6 +106,11 @@ public class MainController {
 				.getForObject(uriAmountsPerDate, String.class);
 		amountsPerDate = gson.fromJson(jsonAmountsPerDate, List.class);
 		
+		String jsonMonthlySummary = paymentsService
+				.getForObject(uriMonthlySummary, String.class);
+		monthlySummary = gson.fromJson(jsonMonthlySummary, Map.class);
+		
+		
 		model.addObject("currentLocale", currentLocale);
 		model.addObject("categories",categories);
 		model.addObject("user", principal.getName());
@@ -108,6 +119,7 @@ public class MainController {
 		model.addObject("paymentsThisMonth", paymentsThisMonth);
 		model.addObject("amountsPerCategory", amountsPerCategory);
 		model.addObject("amountsPerDate", amountsPerDate);
+		model.addObject("monthlySum",monthlySummary.get("monthlySum"));
 		return model;
 	}
 	

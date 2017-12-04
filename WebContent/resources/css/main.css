@@ -104,7 +104,41 @@ header{
 	color:#fff;
 }
 
+table{
+	border: 1px solid #e6e6e6;
+	width:45%;
+	border-collapse: collapse;
+}
+
+th{
+	padding-top:1%;
+	padding-bottom:1%;
+	background:#117bf3;
+	color:#fff;
+	font-family:"Calibri";
+	text-align:left;	
+}
+
+tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+
+td{
+	border: 1px solid #e6e6e6;
+	font-family:"Calibri";
+}
+
+tr:hover {
+	background-color: #ddd;
+}
+
+.category-container p{
+}
+
 h3{
+	font-family:"Segoe UI";
 	color: #02c94b;
 }
+
+
 
