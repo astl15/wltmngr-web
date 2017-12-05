@@ -23,16 +23,9 @@
 <div class="category-container">
 	<h3>Costuri totale lunare</h3>
 	<p>Sumarul lunii curente</p>
-	<table>
-		<tr>
-			<th>Element sumar</th>
-			<th>Valoare</th>
-		</tr>
-		<tr>
-			<td>Suma totala</td>
-			<td>${monthlySum}</td>
-		</tr>
-	</table>	
+	<p class="p-summary">Suma totala: ${monthlySum}</p>
+	<p class="p-summary">Media zilnica: ${monthlyAvg}</p>		
+		
 	<h3>Costuri totale per categorie</h3>
 	<p>In aceasta sectiune sunt afisate costurile totale per catergorie pentru luna curenta</p>
 	<c:if test="${fn:length(amountsPerCategory) gt 0}">

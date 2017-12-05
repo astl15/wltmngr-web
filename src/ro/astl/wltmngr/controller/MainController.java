@@ -120,6 +120,7 @@ public class MainController {
 		model.addObject("amountsPerCategory", amountsPerCategory);
 		model.addObject("amountsPerDate", amountsPerDate);
 		model.addObject("monthlySum",monthlySummary.get("monthlySum"));
+		model.addObject("monthlyAvg",monthlySummary.get("monthlyAvg"));
 		return model;
 	}
 	

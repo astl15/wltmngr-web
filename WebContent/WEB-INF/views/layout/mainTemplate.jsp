@@ -20,7 +20,9 @@
         </header>
      	<div class="page-container">
      		<div class="side-menu">
-     			<tiles:insertAttribute name="menu" />
+     			<div class="menu-container">
+     				<tiles:insertAttribute name="menu" />
+     			</div>
      		</div>
      		<div class="site-content">
      			<div class="body-container">
@@ -28,8 +30,8 @@
      			</div>
      		</div>
      	</div>
-        <footer id="footer">
+        <footer>
             <tiles:insertAttribute name="footer" />
-        </footer>
+        </footer> 
 	</body>
 </html>

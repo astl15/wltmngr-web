@@ -1,6 +1,9 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<form:form modelAttribute="customPayment" action="/WltMngrWeb/payments/custom" method="POST">
+<div class="category-container">
+	<h3>Insertie a unei plati noi</h3>
+	<p>Introduceti datele unei plati</p>
+	<form:form modelAttribute="customPayment" action="/WltMngrWeb/payments/custom" method="POST">
 	<form:label path="date">Data</form:label>
 	<form:input path="date" id="datepicker" />
 	<form:label path="description">Descriere</form:label>
@@ -16,4 +19,6 @@
 			</c:forEach>
 		</form:select>
 	<form:button>Submit</form:button>
-</form:form>
+	</form:form>
+</div>
+
