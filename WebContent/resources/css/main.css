@@ -20,10 +20,8 @@ header{
 	display:flex;
 	margin-top:1%;
 	background:#fff;
-		
-	/*padding-top: 5%;
-	height:100%;
-	width:100%;*/
+	height:100%;	
+	
 }
 
 .side-menu {
@@ -40,6 +38,7 @@ header{
 
 .body-container{
 	margin-right:1%;
+	margin-bottom:1%;
 	border-radius: 5px;
 	border: 1px solid #e6e6e6;
 	box-shadow: 0 0 0 0 rgba(248, 243, 243, 0.1), 0 0 2px 0 rgba(114, 111, 111, 0.2);
@@ -53,6 +52,22 @@ header{
 	box-shadow: 0 0 0 0 rgba(248, 243, 243, 0.1), 0 0 2px 0 rgba(114, 111, 111, 0.2);
 }
 
+.menu-wrapper{
+	margin-left:4%;
+	margin-bottom:4%;
+}
+
+.main-menu, .sub-menu{
+	list-style:none;
+	padding:0;
+	margin:0;
+	color: #02c94b; 
+}
+
+.sub-menu{
+	padding-left:3%;
+}
+
 .category-container{
 	margin:1%;
 	padding-left:1%;
@@ -61,6 +76,7 @@ header{
 	border: 1px solid #e6e6e6;
 }
 footer{
+	clear:both;
 	left: 0;
     bottom: 0;
     width: 100%;
